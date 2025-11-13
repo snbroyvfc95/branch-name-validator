@@ -1,0 +1,55 @@
+{
+  "name": "branch-commit-validator",
+  "version": "1.0.1",
+  "description": "A Node.js package that validates Git branch names and commit messages based on Jira ticket format conventions. Ensures consistent naming patterns with feature/, bugfix/, and hotfix/ prefixes.",
+  "main": "index.js",
+  "bin": {
+    "validate-git": "./cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node cli.js",
+    "validate-branch": "node cli.js branch",
+    "validate-commit": "node cli.js commit"
+  },
+  "keywords": [
+    "git",
+    "branch",
+    "commit",
+    "validator",
+    "jira",
+    "naming",
+    "convention",
+    "validation",
+    "cli",
+    "git-hooks",
+    "branch-naming",
+    "commit-message",
+    "ticket-format",
+    "development-tools"
+  ],
+  "author": {
+    "name": "Sanjib Roy",
+    "email": "sanjib.roy@example.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanjibroy/branch-commit-validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanjibroy/branch-commit-validator/issues"
+  },
+  "homepage": "https://github.com/sanjibroy/branch-commit-validator#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "index.js",
+    "cli.js",
+    "README.md"
+  ],
+  "preferGlobal": true,
+  "dependencies": {},
+  "devDependencies": {}
+}
