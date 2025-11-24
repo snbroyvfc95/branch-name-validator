@@ -1,7 +1,7 @@
 {
   "name": "branch-commit-validator",
-  "version": "1.0.1",
-  "description": "A Node.js package that validates Git branch names and commit messages based on Jira ticket format conventions. Ensures consistent naming patterns with feature/, bugfix/, and hotfix/ prefixes.",
+  "version": "3.0.1",
+  "description": "Simple Git branch and commit validator for consistent naming conventions. Validates format and ensures proper ticket ID patterns without external API dependencies.",
   "main": "index.js",
   "bin": {
     "validate-git": "./cli.js"
@@ -10,14 +10,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node cli.js",
     "validate-branch": "node cli.js branch",
-    "validate-commit": "node cli.js commit"
+    "validate-commit": "node cli.js commit",
+    "validate-both": "node cli.js both",
+    "config": "node cli.js config"
   },
   "keywords": [
     "git",
     "branch",
     "commit",
     "validator",
-    "jira",
     "naming",
     "convention",
     "validation",
@@ -26,11 +27,13 @@
     "branch-naming",
     "commit-message",
     "ticket-format",
-    "development-tools"
+    "development-tools",
+    "format-validation",
+    "simple"
   ],
   "author": {
     "name": "Sanjib Roy",
-    "email": "sanjib.roy@example.com"
+    "email": "sanjibroy17061995@gmail.com"
   },
   "license": "MIT",
   "repository": {
@@ -50,6 +53,8 @@
     "README.md"
   ],
   "preferGlobal": true,
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
   "devDependencies": {}
 }

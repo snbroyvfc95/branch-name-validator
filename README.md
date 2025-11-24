@@ -1,23 +1,32 @@
-# Branch Commit Validator
+# 🎫 Branch Commit Validator with Jira Integration
 
-A Node.js package that validates Git branch names and commit messages based on Jira ticket format conventions.
+A powerful Node.js package that validates Git branch names and commit messages with **real-time Jira ticket verification**. Now with v2.0.0, it includes comprehensive Jira API integration for enterprise-grade validation.
 
-## Overview
+## 🚀 Overview
 
-This tool helps maintain consistent Git branch naming and commit message conventions in your projects by enforcing specific patterns that include Jira ticket references.
+This enhanced tool maintains consistent Git conventions while ensuring your Jira tickets actually exist, providing real-time validation with intelligent caching and comprehensive error handling.
 
-## Features
+## ✨ Features
 
-- ✅ Validates Git branch names with proper prefixes
-- ✅ Ensures Jira ticket format (SHOP-XXXX)
-- ✅ Validates commit messages with same format
-- ✅ Command-line interface for easy integration
-- ✅ Programmatic API for custom implementations
-- ✅ Clear error messages with examples
+### 🎯 **Core Validation**
+- ✅ **Git branch names** with proper prefixes (feature/, bugfix/, hotfix/, release/, chore/)
+- ✅ **Jira ticket format** validation with multiple project support
+- ✅ **Commit messages** following consistent patterns
+- ✅ **Command-line interface** for easy integration
+- ✅ **Programmatic API** for custom implementations
 
-## Installation
+### 🎫 **NEW: Jira Integration (v2.0.0)**
+- 🔍 **Real-time ticket verification** via Jira API
+- ⚡ **Intelligent caching** with configurable TTL
+- 🛡️ **Authentication support** with API tokens
+- 🌐 **Multi-project support** (SHOP, PROJ, TASK, etc.)
+- 🔧 **Configurable validation** with environment variables
+- 📊 **Cache management** with statistics and cleanup
+- ⚙️ **Graceful fallback** for offline development
 
-### Global Installation
+## 📦 Installation
+
+### Global Installation (Recommended)
 ```bash
 npm install -g branch-commit-validator
 ```
@@ -27,21 +36,71 @@ npm install -g branch-commit-validator
 npm install branch-commit-validator
 ```
 
-## Usage
+## 🎯 Quick Start
 
-### Command Line Interface
-
-#### Validate Branch Names
+### 1. **Basic Usage (Format Validation Only)**
 ```bash
+# Validate branch names
 validate-git branch feature/SHOP-1234-add-user-authentication
 validate-git branch bugfix/SHOP-5678-fix-login-bug
 validate-git branch hotfix/SHOP-9012-critical-security-patch
-```
 
-#### Validate Commit Messages
-```bash
+# Validate commit messages
 validate-git commit SHOP-1234-add-user-authentication
 validate-git commit SHOP-5678-fix-login-bug
+```
+
+### 2. **Enhanced Usage with Jira Integration**
+```bash
+# Set up Jira configuration (one-time setup)
+export JIRA_API_URL=https://yourcompany.atlassian.net
+export JIRA_USERNAME=your-email@company.com
+export JIRA_API_TOKEN=your-jira-api-token
+
+# Now validation includes real Jira ticket verification!
+validate-git branch feature/SHOP-1234-user-authentication
+```
+
+**Output with Jira:**
+```
+🔍 Validating branch: feature/SHOP-1234-user-authentication
+🔍 Validating Jira ticket: SHOP-1234...
+
+✅ Branch name is valid and Jira ticket exists
+🎫 Ticket: SHOP-1234
+📋 Summary: Implement user authentication system
+📊 Status: In Progress
+👤 Assignee: John Doe
+```
+
+## 🎫 Jira Integration Setup
+
+### **Environment Configuration**
+```bash
+# Required for Jira integration
+JIRA_API_URL=https://yourcompany.atlassian.net
+JIRA_USERNAME=your-email@company.com
+JIRA_API_TOKEN=your-jira-api-token
+
+# Optional configuration
+JIRA_PROJECT_KEYS=SHOP,PROJ,TASK    # Multiple projects (default: SHOP)
+SKIP_JIRA_VALIDATION=false          # Skip Jira validation (default: false)
+JIRA_CACHE_TTL=60                   # Cache TTL in minutes (default: 60)
+```
+
+### **Advanced Commands**
+```bash
+# Validate both branch and commit together
+validate-git both "feature/SHOP-1234-auth" "SHOP-1234-implement-auth"
+
+# View current Jira configuration
+validate-git config
+
+# Check cache statistics
+validate-git cache-stats
+
+# Clear ticket cache
+validate-git cache-clear
 ```
 
 ### Programmatic Usage
